@@ -47,7 +47,7 @@ function generateToken(user) {
   const payload = {
     subject: user.id, // standard claim = sub
     username: user.username,
-    department: ['admin']
+    department: [user.department]
   };
   const options = {
     expiresIn: '1h'
