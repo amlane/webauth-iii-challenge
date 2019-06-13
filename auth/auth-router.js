@@ -1,33 +1,34 @@
-const router = require('express').Router();
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const secrets = require('../config/secrets.js');
+const router = require("express").Router();
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const secrets = require("../config/secrets.js");
 
-const Users = require('../users/users-model.js');
+const Users = require("../users/users-model.js");
 
 // for endpoints beginning with /api/auth
-router.post('/register', (req, res) => {
+router.post("/register", (req, res) => {
   let user = req.body;
   const hash = bcrypt.hashSync(user.password, 10); // 2 ^ n
   user.password = hash;
 
   Users.add(user)
     .then(saved => {
-      res.status(201).json(saved);
+      const token = generateToken(saved);
+      res.status(201).json({ saved, token });
     })
     .catch(error => {
       res.status(500).json(error);
     });
 });
 
-router.post('/login', (req, res) => {
+router.post("/login", (req, res) => {
   let { username, password } = req.body;
 
   Users.findBy({ username })
     .first()
     .then(user => {
       if (user && bcrypt.compareSync(password, user.password)) {
-        // generate token 
+        // generate token
         const token = generateToken(user);
 
         res.status(200).json({
@@ -35,7 +36,7 @@ router.post('/login', (req, res) => {
           token //return the token upon login
         });
       } else {
-        res.status(401).json({ message: 'Invalid Credentials' });
+        res.status(401).json({ message: "Invalid Credentials" });
       }
     })
     .catch(error => {
@@ -50,8 +51,8 @@ function generateToken(user) {
     department: [user.department]
   };
   const options = {
-    expiresIn: '1h'
-  }
+    expiresIn: "1h"
+  };
   return jwt.sign(payload, secrets.jwtSecret, options);
 }
 
