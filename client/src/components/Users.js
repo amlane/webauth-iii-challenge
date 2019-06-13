@@ -22,6 +22,7 @@ class Users extends React.Component {
   }
 
   render() {
+    console.log("CDM");
     return (
       <header className="App-header">
         <h1>Users List</h1>
