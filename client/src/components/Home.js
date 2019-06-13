@@ -8,7 +8,7 @@ function Home(){
         return (
             <header className="App-header">
         
-              <p>Welcome to Users</p>
+              <h1>Welcome to Users</h1>
     
             </header>
         )

@@ -3,6 +3,7 @@ import { NavLink, Route } from 'react-router-dom';
 
 import Home from './components/Home';
 import Login from './components/Login';
+import Users from './components/Users';
 
 import './App.css';
 
@@ -18,6 +19,7 @@ function App() {
       </header>
       <Route exact path="/" component={Home} />
       <Route path="/login" component={Login} />
+      <Route path="/users" component={Users} />
     </div>
   );
 }
