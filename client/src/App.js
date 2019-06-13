@@ -10,9 +10,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <nav>
-        <NavLink to="/">Home</NavLink>{' '}
-          <NavLink to="/login">Login</NavLink>
+        <nav className="main-nav">
+          <NavLink exact to="/">Home</NavLink>{' '}
+          <NavLink to="/login">Login</NavLink>{' '}
+          <NavLink to="/users">Users</NavLink>{' '}
         </nav>
       </header>
       <Route exact path="/" component={Home} />
