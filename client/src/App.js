@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, Route, withRouter } from "react-router-dom";
+import PrivateRoute from "./components/auth/PrivateRoute";
 
-import Home from "./components/Home";
 import SignUp from "./components/auth/SignUp";
 import Login from "./components/auth/Login";
 import Users from "./components/Users";
@@ -15,23 +15,26 @@ class App extends React.Component {
   };
 
   render() {
+    console.log("app component rendered");
     return (
       <div className="App">
+        <div className="logout-cta">
+          {localStorage.getItem("token") ? (
+            <button onClick={this.logOut} className="logout">
+              Log Out
+            </button>
+          ) : null}
+        </div>
         <header className="App-header">
           <nav className="main-nav">
-            <NavLink exact to="/">
-              Home
-            </NavLink>{" "}
             <NavLink to="/signup">Sign Up</NavLink>{" "}
             <NavLink to="/login">Login</NavLink>{" "}
             <NavLink to="/users">Users</NavLink>{" "}
-            <button onClick={this.logOut}>Log Out</button>
           </nav>
         </header>
-        <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
-        <Route path="/users" component={Users} />
+        <PrivateRoute path="/users" component={Users} />
       </div>
     );
   }

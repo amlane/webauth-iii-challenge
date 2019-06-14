@@ -1,44 +1,114 @@
 .App {
-  text-align: center;
-  height: 100vh;
-  background-color: #282c34;
+  max-width: 700px;
+  margin: 1% auto;
 }
 
 .App-header {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.logout-cta {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.logout {
+  background: none;
+  color: white;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 1% 10px;
+}
+
+.main-nav {
+  margin-top: 5%;
 }
 
 .main-nav a {
   text-decoration: none;
   color: white;
+  font-size: 1.4rem;
 }
 
 .main-nav a.active {
   border-bottom: 1px solid;
 }
 
+h1 {
+  margin: 5% 0;
+  color: teal;
+}
+
 .login-form {
-  border: 1px solid;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: space-evenly;
   margin: 5%;
-  padding: 5%;
+  padding: 1% 5%;
+  height: 375px;
+  width: 300px;
+  background: white;
+  color: black;
+}
+
+.login-form label {
+  font-size: 0.8rem;
+}
+
+.login-form input {
+  border: 1px solid silver;
+  padding: 2%;
+  width: 90%;
 }
 
 .login-form button {
-  margin: 20% 10% 0 10%;
-  background: none;
+  background: rgb(0, 165, 165);
+  border: none;
+  border-radius: 5px;
+  margin: 5% 0;
+  padding: 1% 10px;
+  width: 90%;
+  height: 35px;
   color: white;
-  border: 1px solid;
-  padding: 3% 0;
 }
 
 button:hover {
   cursor: pointer;
+}
+
+h2 {
+  margin: 5%;
+}
+
+.user-cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.users {
+  border-radius: 5px;
+  margin: 1rem;
+  padding: 1rem;
+  background: white;
+  color: teal;
+}
+
+.new-user-signup {
+  font-size: 1rem;
+}
+
+.new-user-signup a {
+  color: teal;
+}
+
+button:focus,
+input:focus {
+  outline: none;
 }

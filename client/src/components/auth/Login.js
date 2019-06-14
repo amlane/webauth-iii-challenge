@@ -1,11 +1,12 @@
 import React from "react";
 import axios from "axios";
+import { NavLink } from "react-router-dom";
 
 import "../../App.css";
 
 class Login extends React.Component {
   state = {
-    username: "TestUser",
+    username: "admin",
     password: "123"
   };
 
@@ -34,7 +35,8 @@ class Login extends React.Component {
     return (
       <header className="App-header">
         <form onSubmit={this.handleSubmit} className="login-form">
-          <h1>Login</h1>
+          <h1>Log In</h1>
+
           <label>username</label>
           <input
             value={this.state.username}
@@ -43,6 +45,7 @@ class Login extends React.Component {
             name="username"
             onChange={this.handleInput}
           />
+
           <label>password</label>
           <input
             value={this.state.password}
@@ -51,7 +54,11 @@ class Login extends React.Component {
             name="password"
             onChange={this.handleInput}
           />
-          <button type="submit">login</button>
+
+          <button type="submit">Log In</button>
+          <p className="new-user-signup">
+            Not a User? <NavLink to="/signup">Sign Up</NavLink>
+          </p>
         </form>
       </header>
     );

@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { NavLink } from "react-router-dom";
 
 import "../../App.css";
 
@@ -36,6 +37,7 @@ class SignUp extends React.Component {
       <header className="App-header">
         <form onSubmit={this.handleSubmit} className="login-form">
           <h1>Sign Up</h1>
+
           <label>username</label>
           <input
             value={this.state.username}
@@ -44,6 +46,7 @@ class SignUp extends React.Component {
             name="username"
             onChange={this.handleInput}
           />
+
           <label>password</label>
           <input
             value={this.state.password}
@@ -52,6 +55,7 @@ class SignUp extends React.Component {
             name="password"
             onChange={this.handleInput}
           />
+
           <label>department</label>
           <input
             value={this.state.department}
@@ -60,7 +64,11 @@ class SignUp extends React.Component {
             name="department"
             onChange={this.handleInput}
           />
-          <button type="submit">sign up</button>
+
+          <button type="submit">Sign Up</button>
+          <p className="new-user-signup">
+            Not a User? <NavLink to="/login">Log In</NavLink>
+          </p>
         </form>
       </header>
     );
